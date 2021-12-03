@@ -1,6 +1,7 @@
 file = open("input.txt")
 
-def searchSpace(inputs, pos, oxymode):
+
+def search_space(inputs, pos, oxymode):
     if len(inputs) == 1:
         return inputs[0]
     ones = 0
@@ -12,18 +13,19 @@ def searchSpace(inputs, pos, oxymode):
             ones += 1
 
     if ones >= zeros:
-        mostCommon = 1
+        most_common = 1
     else:
-        mostCommon = 0
+        most_common = 0
 
     subset = []
     for inp in inputs:
-        if oxymode and inp[pos] == mostCommon:
+        if oxymode and inp[pos] == most_common:
             subset.append(inp)
-        elif not oxymode and inp[pos] != mostCommon:
+        elif not oxymode and inp[pos] != most_common:
             subset.append(inp)
 
-    return searchSpace(subset, pos + 1, oxymode)
+    return search_space(subset, pos + 1, oxymode)
+
 
 def convert(bits):
     res = 0
@@ -31,8 +33,9 @@ def convert(bits):
         res = (res << 1) | bit
     return res
 
+
 inputs = []
 for line in file:
     inputs.append([int(val) for val in list(line.strip())])
 
-print(convert(searchSpace(inputs, 0, True)) * convert(searchSpace(inputs, 0, False)))
+print(convert(search_space(inputs, 0, True)) * convert(search_space(inputs, 0, False)))
