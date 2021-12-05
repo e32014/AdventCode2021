@@ -7,7 +7,7 @@ grid = dict()
 for line in file:
     x1, y1, x2, y2 = [int(val) for val in re.match("([0-9]+),([0-9]+) -> ([0-9]+),([0-9]+)", line.strip()).groups()]
     if x1 != x2 and y1 != y2:
-        slope = (y1 - y2) / (x1 - x2)
+        slope = int((y1 - y2) / (x1 - x2))
         start, end = [x1, x2] if x1 < x2 else [x2, x1]
         ypos = y1 if x1 < x2 else y2
         for i in range(start, end + 1):
