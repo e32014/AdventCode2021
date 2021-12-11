@@ -14,29 +14,27 @@ while True:
             matrix[i][j] = min(matrix[i][j] + 1, 10)
 
     while any(10 in row for row in matrix):
-        newMatrix = deepcopy(matrix)
         for i in range(len(matrix)):
             for j in range(len(matrix[i])):
                 if matrix[i][j] > 9:
                     flashes += 1
-                    newMatrix[i][j] = 0
-                    if i - 1 >= 0 and j - 1 >= 0 and newMatrix[i-1][j-1] != 0:
-                        newMatrix[i-1][j-1] = min(newMatrix[i-1][j-1] + 1, 10)
-                    if i - 1 >= 0 and newMatrix[i-1][j] != 0:
-                        newMatrix[i-1][j] = min(newMatrix[i-1][j] + 1, 10)
-                    if i - 1 >= 0 and j + 1 < len(newMatrix[j]) and newMatrix[i-1][j+1] != 0:
-                        newMatrix[i-1][j+1] = min(newMatrix[i-1][j + 1] + 1, 10)
-                    if j - 1 >= 0 and newMatrix[i][j-1] != 0:
-                        newMatrix[i][j-1] = min(newMatrix[i][j-1] + 1, 10)
-                    if j + 1 < len(newMatrix[i]) and newMatrix[i][j+1] != 0:
-                        newMatrix[i][j+1] = min(newMatrix[i][j+1] + 1, 10)
-                    if i + 1 < len(newMatrix) and j - 1 >= 0 and newMatrix[i+1][j-1] != 0:
-                        newMatrix[i+1][j-1] = min(newMatrix[i+1][j-1] + 1, 10)
-                    if i + 1 < len(newMatrix) and newMatrix[i+1][j] != 0:
-                        newMatrix[i+1][j] = min(newMatrix[i+1][j] + 1, 10)
-                    if i + 1 < len(newMatrix) and j + 1 < len(newMatrix[i]) and newMatrix[i+1][j+1] != 0:
-                        newMatrix[i+1][j+1] = min(newMatrix[i+1][j + 1] + 1, 10)
-        matrix = newMatrix
+                    matrix[i][j] = 0
+                    if i - 1 >= 0 and j - 1 >= 0 and matrix[i-1][j-1] != 0:
+                        matrix[i-1][j-1] = min(matrix[i-1][j-1] + 1, 10)
+                    if i - 1 >= 0 and matrix[i-1][j] != 0:
+                        matrix[i-1][j] = min(matrix[i-1][j] + 1, 10)
+                    if i - 1 >= 0 and j + 1 < len(matrix[j]) and matrix[i-1][j+1] != 0:
+                        matrix[i-1][j+1] = min(matrix[i-1][j + 1] + 1, 10)
+                    if j - 1 >= 0 and matrix[i][j-1] != 0:
+                        matrix[i][j-1] = min(matrix[i][j-1] + 1, 10)
+                    if j + 1 < len(matrix[i]) and matrix[i][j+1] != 0:
+                        matrix[i][j+1] = min(matrix[i][j+1] + 1, 10)
+                    if i + 1 < len(matrix) and j - 1 >= 0 and matrix[i+1][j-1] != 0:
+                        matrix[i+1][j-1] = min(matrix[i+1][j-1] + 1, 10)
+                    if i + 1 < len(matrix) and matrix[i+1][j] != 0:
+                        matrix[i+1][j] = min(matrix[i+1][j] + 1, 10)
+                    if i + 1 < len(matrix) and j + 1 < len(matrix[i]) and matrix[i+1][j+1] != 0:
+                        matrix[i+1][j+1] = min(matrix[i+1][j + 1] + 1, 10)
     allFlash = True
     for row in matrix:
         for val in row:
